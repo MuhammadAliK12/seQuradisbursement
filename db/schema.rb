@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_12_081109) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_13_085846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "disbursements", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "amount"
+    t.string "sequra_fee"
+    t.uuid "merchant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_disbursements_on_merchant_id"
+  end
+
+  create_table "disbursements_orders", id: false, force: :cascade do |t|
+    t.bigint "disbursement_id", null: false
+    t.bigint "order_id", null: false
+  end
 
   create_table "merchants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
@@ -34,5 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_081109) do
     t.index ["merchant_id"], name: "index_orders_on_merchant_id"
   end
 
+  add_foreign_key "disbursements", "merchants"
   add_foreign_key "orders", "merchants"
 end
