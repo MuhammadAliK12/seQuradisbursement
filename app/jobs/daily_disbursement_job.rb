@@ -2,6 +2,6 @@ class DailyDisbursementJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # Do something later
+    CalculateMerchantDisbursement.new(Merchant.all).call
   end
 end
