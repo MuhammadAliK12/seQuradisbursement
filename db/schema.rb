@@ -27,8 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_111453) do
   end
 
   create_table "disbursements_orders", id: false, force: :cascade do |t|
-    t.bigint "disbursement_id", null: false
-    t.bigint "order_id", null: false
+    t.uuid "disbursement_id", null: false
+    t.uuid "order_id", null: false
   end
 
   create_table "merchants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

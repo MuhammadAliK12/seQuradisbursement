@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :merchant do
-    email { "MyString" }
+    email { Faker::Internet.email }
     live_on { "2024-01-12" }
-    disbursement_frequency { "MyString" }
+    disbursement_frequency { "DAILY" }
   end
 end

@@ -15,13 +15,12 @@ class PerformDisbursementCalculation
             total_fees += fees
             total_disbursed_amount += disbursed_amount
         end
-
-        #Disbursement.create!(disbursement_params(total_fees, total_disbursed_amount, @merchant, query))
+        Disbursement.create!(disbursement_params(total_fees, total_disbursed_amount, @merchant, query)) unless query.empty?
     end
 
     def query
-        @merchant.orders.where(created_at: @range_of_orders .. Date.today, is_disbursed: false)
-    end    
+        @merchant.orders.where(created_at: @range_of_orders .. DateTime.now, is_disbursed: false)
+    end
 
     def disbursement_params(total_fees, total_disbursed_amount, merchant, query)
         {
@@ -44,11 +43,8 @@ class PerformDisbursementCalculation
     end
     
     def get_amount_and_fees(amount, commission)
-       fees = amount * (commission/100)
+       fees = amount.to_f * (commission.to_f/100.to_f)
        disbursed_amount = amount - fees
-       puts "*************************************************"
-       puts fees
-       puts disbursed_amount
        return fees, disbursed_amount
     end    
 end    
