@@ -29,7 +29,7 @@ rspec spec/
 ```
 
 ### What was done
-Within 6 hours I managed to have a job which calculate disbursement daily for weekly / daily merchants. 
+Within 6 hours I managed to have a job that calculate disbursement daily for weekly / daily merchants. 
 Job can be found in `daily_disbursement_job` file.
 
 Created a service `calculate_merchant_disbursement` whose main role is to know wether merchant is daily/weekly and calculate the disbursement accordingly
