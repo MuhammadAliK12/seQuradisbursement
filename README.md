@@ -9,7 +9,7 @@ Rails 7.0.8
 ```  
 
 ### System dependencies
-- ruby version need to be installed alongside with rails
+- ruby version needs to be installed alongside with rails
 
 
 ### How to install
