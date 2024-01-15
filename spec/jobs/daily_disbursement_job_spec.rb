@@ -54,4 +54,13 @@ RSpec.describe DailyDisbursementJob, type: :job do
     expect(Disbursement.first.amount_cents).to eq(49575)
     expect(Disbursement.first.sequra_fee_cents).to eq(425)
   end
+
+  it 'should change the total monthly fees given by merchant' do
+
+    merchant = create(:merchant)
+    order =    create(:order, merchant: merchant, amount_cents: "50000" )
+    
+    daily_disbursement_job
+    expect(Merchant.first.monthly_fees_given_cents).to eq(425)
+  end
 end
