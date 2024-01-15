@@ -40,8 +40,10 @@ Created a service `fill_yearly_disbursement_summary` whose main role is to store
 
 Model `disbursement` after create hook store `monthly_fees_given` and also triggers yearly disbursement summary
 
+Development objectives were mainly archieved by using TDD approach. All tests are in file `daily_disbursement_job_spec`
+
 ### What is remaining
 
-calculate monthly fees given and number of fees in yearly summary
+Calculate monthly fees given and number of fees in yearly summary
 
-import CSV files for orders and merchants
+Import CSV files for orders and merchants
