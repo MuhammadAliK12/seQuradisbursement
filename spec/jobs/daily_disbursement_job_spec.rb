@@ -63,4 +63,11 @@ RSpec.describe DailyDisbursementJob, type: :job do
     daily_disbursement_job
     expect(Merchant.first.monthly_fees_given_cents).to eq(425)
   end
+
+  it 'should change / add yearly disbursement summary' do
+
+    merchant = create(:merchant)
+    order =    create(:order, merchant: merchant, amount_cents: "50000" )
+    expect { daily_disbursement_job }.to change(YearlyDisbursementsSummary, :count).by(1)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_15_092617) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_15_095643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -51,6 +51,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_092617) do
     t.datetime "updated_at", null: false
     t.boolean "is_disbursed", default: false
     t.index ["merchant_id"], name: "index_orders_on_merchant_id"
+  end
+
+  create_table "yearly_disbursements_summaries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "number_of_disbursement"
+    t.integer "number_of_monthly_fees"
+    t.integer "amount_disbursed_to_merchant_cents", default: 0, null: false
+    t.string "amount_disbursed_to_merchant_currency", default: "EUR", null: false
+    t.integer "amount_of_order_fees_cents", default: 0, null: false
+    t.string "amount_of_order_fees_currency", default: "EUR", null: false
+    t.integer "amount_of_monthly_fee_charged_cents", default: 0, null: false
+    t.string "amount_of_monthly_fee_charged_currency", default: "EUR", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "year"
   end
 
   add_foreign_key "disbursements", "merchants"

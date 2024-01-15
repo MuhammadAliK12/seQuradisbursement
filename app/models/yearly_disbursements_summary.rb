@@ -1,0 +1,2 @@
+class YearlyDisbursementsSummary < ApplicationRecord
+end
