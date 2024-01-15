@@ -20,7 +20,7 @@ Rails 7.0.8
 - insert your database credentials inside database.yml
 - rails db:create db:migrate
 - rails db:seed
-- task `daily_disbursement:make_daily_disbursement` can be run daily at 8 UTC either by whenever gem/cron tab
+- task `daily_disbursement:make_daily_disbursement` can be run daily at 8 UTC either by whenever gem or cron tab
 
 
 ### How to run the test suite
