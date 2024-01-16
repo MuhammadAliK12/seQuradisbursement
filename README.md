@@ -9,7 +9,7 @@ Rails 7.0.8
 ```  
 
 ### System dependencies
-- ruby version needs to be installed alongside with rails
+- Ruby version needs to be installed alongside with Rails
 
 
 ### How to install
@@ -20,7 +20,7 @@ Rails 7.0.8
 - insert your database credentials inside database.yml
 - rails db:create db:migrate
 - rails db:seed
-- task `daily_disbursement:make_daily_disbursement` can be run daily at 8 UTC either by whenever gem or cron tab
+- task `daily_disbursement:make_daily_disbursement` can be run daily at 8 UTC either by whenever gem or crontab
 
 
 ### How to run the test suite
@@ -42,8 +42,10 @@ Model `disbursement` after create hook store `monthly_fees_given` and also trigg
 
 Development objectives were mainly archieved by using TDD approach. All tests are in file `daily_disbursement_job_spec`
 
+`yearly_disbursements_summaries` is the table name which stores the summary of each year like amount given and number of disbursements
+
 ### What is remaining
 
-Calculate monthly fees given and number of fees in yearly summary
+Calculate monthly fees given and number of fees in yearly summary (lack of time)
 
-Import CSV files for orders and merchants
+Import CSV files for orders and merchants (lack of time)
